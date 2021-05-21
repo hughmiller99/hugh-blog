@@ -19,7 +19,7 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 ## CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///blog.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL1", "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -86,7 +86,7 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
     parent_post = relationship("BlogPost", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
-db.create_all()
+# db.create_all()
 
 
 @app.route('/')
